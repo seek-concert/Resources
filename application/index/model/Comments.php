@@ -15,4 +15,7 @@ class Comments extends Model
     protected $deleteTime = 'deleted_at';
     protected $autoWriteTimestamp = true;
     protected $field = true;
+    protected $type = [
+        'comment_time'  =>  'timestamp'
+    ];
 }
