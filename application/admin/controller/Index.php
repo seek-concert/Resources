@@ -5,7 +5,7 @@
 namespace app\admin\controller;
 
 
-class Admin extends Init
+class Index extends Init
 {
 
     /**
