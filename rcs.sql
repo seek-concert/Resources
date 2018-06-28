@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-06-26 10:57:29
+Date: 2018-06-27 17:32:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `rcs_ad` (
   `updated_at` int(11) DEFAULT NULL,
   `deleted_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='广告友链表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='广告友链表';
 
 -- ----------------------------
 -- Records of rcs_ad
@@ -39,6 +39,8 @@ INSERT INTO `rcs_ad` VALUES ('1', 'banner1', 'http://www.17sucai.com/preview/705
 INSERT INTO `rcs_ad` VALUES ('2', 'banner2', 'http://www.17sucai.com/preview/705993/2018-01-18/Blog_html/img/slider/slide2.jpg', null, '1', '1', null, null, null);
 INSERT INTO `rcs_ad` VALUES ('3', 'banner3', 'http://www.17sucai.com/preview/705993/2018-01-18/Blog_html/img/slider/slide3.jpg', null, '1', '1', null, null, null);
 INSERT INTO `rcs_ad` VALUES ('4', 'banner4', 'http://www.17sucai.com/preview/705993/2018-01-18/Blog_html/img/slider/slide4.jpg', null, '1', '1', null, null, null);
+INSERT INTO `rcs_ad` VALUES ('5', '百度', '', 'https://www.baidu.com', '2', '1', null, null, null);
+INSERT INTO `rcs_ad` VALUES ('6', '腾讯', null, 'http://qq.com', '2', '1', null, null, null);
 
 -- ----------------------------
 -- Table structure for rcs_admin
@@ -92,12 +94,14 @@ CREATE TABLE `rcs_comment` (
   `updated_at` int(11) DEFAULT NULL,
   `deleted_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='资源文章评论记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='资源文章评论记录表';
 
 -- ----------------------------
 -- Records of rcs_comment
 -- ----------------------------
 INSERT INTO `rcs_comment` VALUES ('1', '3', 'adminas', null, '231241', '\0', null, null, null);
+INSERT INTO `rcs_comment` VALUES ('2', '3', 'adminas', null, '231241', '\0', null, null, null);
+INSERT INTO `rcs_comment` VALUES ('3', '3', 'adminas', null, '231241', '\0', null, null, null);
 
 -- ----------------------------
 -- Table structure for rcs_config
@@ -108,6 +112,7 @@ CREATE TABLE `rcs_config` (
   `webname` varchar(255) NOT NULL DEFAULT '' COMMENT '网站名称',
   `webnum` varchar(255) DEFAULT NULL COMMENT '网站备案号',
   `seokey` varchar(255) DEFAULT NULL COMMENT 'SEO关键字',
+  `wx_code` varchar(255) DEFAULT NULL COMMENT '微信二维码',
   `qq_num` int(20) DEFAULT NULL COMMENT 'QQ',
   `e_mail` varchar(255) DEFAULT NULL COMMENT '邮箱',
   `announcement` text COMMENT '公告',
@@ -116,11 +121,12 @@ CREATE TABLE `rcs_config` (
   `updated_at` int(11) DEFAULT NULL,
   `deleted_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='网站配置表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='网站配置表';
 
 -- ----------------------------
 -- Records of rcs_config
 -- ----------------------------
+INSERT INTO `rcs_config` VALUES ('1', '', null, null, 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQGh8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyM2daSHN1LTlmZDMxMDAwMDAwN18AAgQB2_VZAwQAAAAA', null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for rcs_content
