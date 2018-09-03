@@ -33,7 +33,7 @@
                                         <a class="label label-default">{$lable}</a>
                                     {/foreach}
                                     <p class="w_list_overview overView" style="line-height: 2 !important;">{$contentinfo->content}</p>
-                                    <p class="count_r"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:2</span><span class="count"><i class="glyphicon glyphicon-time"></i>2017-01-16</span></p>
+                                    <p class="count_r"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{$contentinfo->comments_count}</span><span class="count"><i class="glyphicon glyphicon-time"></i>2017-01-16</span></p>
                                 </div>
                             </div>
                         </div>
@@ -54,16 +54,12 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-unstyled sidebar">
-                            <li><a href="/post/04928311">排序算法之冒泡排序 － java实现</a></li>
-                            <li><a href="/post/32097759">快速搭建基于二进制日志文件的 mysql 复制</a></li>
-                            <li><a href="/post/09196557">web 服务器负载均衡教程，快速搭建高可用服务器集群</a></li>
-                            <li><a href="/post/20654391">使用 redis 和 spring-session 实现 tomcat、glassfish 等 web 服务器集群 session 共享</a></li>
-                            <li><a href="/post/41501569">使用 Nginx 实现 tomcat、glassfish 等 web 服务器负载均衡</a></li>
-                            <li><a href="/post/89658700">mysql 复制（replication）基础概念和应用场景简介</a></li>
-                            <li><a href="/post/03088922">redis 单节点在 Linux 生产环境的安装和简单配置</a></li>
-                            <li><a href="/post/05203355">使用 jQuery 的 val() 方法来获取以及设置表单元素值</a></li>
-                            <li><a href="/post/03120718">使用 jQuery 的 removeProp() 方法来删除元素的特性（property）</a></li>
-                            <li><a href="/post/37454977">使用 jQuery 的 prop() 方法来获取以及设置元素的特性（property）</a></li>
+                            {volist name='content_info' id='contentinfos'}
+                            <li>
+                                <a href="#">{$contentinfos->title}</a>
+                            </li>
+                            {/volist}
+
                         </ul>
                     </div>
                 </div>
@@ -75,11 +71,11 @@
                     <div class="panel-body">
                         <div class="newContent">
                             <ul class="list-unstyled sidebar shiplink">
-                                <li><a href="https://www.baidu.com/" target="_blank">百度</a></li>
-                                <li><a href="https://www.oschina.net/" target="_blank">开源中国</a></li>
-                                <li><a href="http://www.ulewo.com/" target="_blank">有乐网</a></li>
-                                <li><a href="http://www.sina.com.cn/" target="_blank">新浪网</a></li>
-                                <li><a href="http://www.qq.com/" target="_blank">腾讯网</a></li>
+                                {volist name='href_info' id='hrefinfo'}
+                                <li>
+                                    <a href="{$hrefinfo->jump_url}" target="_blank">{$hrefinfo->name}</a>
+                                </li>
+                                {/volist}
                             </ul>
                         </div>
                     </div>
