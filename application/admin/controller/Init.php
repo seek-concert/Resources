@@ -27,7 +27,7 @@ class Init extends Controller
         $userid = cookie('admin_userid');
         if(session('?admin_userid') === FALSE || session('?type') === FALSE || $userid != session('admin_userid')) {
             $this->error('您尚未登录', url('Admin/Index/login'));
-        }
+        } 
         
     }
 
