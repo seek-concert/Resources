@@ -51,3 +51,19 @@ function random($length, $numeric = 0) {
 	}
 	return $hash;
 }
+/**
+ * 获取子节点
+ * @return bool
+ * @author xuewl <master@xuewl.cn>
+ * @copyright: 雪毅网络官方团队
+ * @date：2016-07-12
+ * @version：1.0
+ **/
+function get_child($parentid = 0){
+	$node = model('admin/node')->where(['parentid'=>$parentid])->select();
+	$node_arr = [];
+	foreach ($node as $key => $value) {
+		$node_arr[] = $value->toArray();
+	}
+	return $node_arr;
+}

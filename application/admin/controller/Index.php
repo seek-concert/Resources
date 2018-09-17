@@ -50,6 +50,11 @@ class Index extends Init
      * @version：1.0
      */
     public function index(){
-
+        $userid = cookie('admin_userid');
+        $node_arr = get_child(0);
+        $this->assign('node_arr',$node_arr);
+        return view();
     }
+
+   
 }

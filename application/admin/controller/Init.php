@@ -28,11 +28,23 @@ class Init extends Controller
         if(session('?admin_userid') === FALSE || session('?type') === FALSE || $userid != session('admin_userid')) {
             $this->error('您尚未登录', url('Admin/Index/login'));
         }
-        echo cookie('FROMHASH');
-        $login_hash = model('admin')->where(['id'=>session('admin_userid')])->column('login_hash');
-        if(cookie('FROMHASH') != $login_hash){
-            $this->error('您的账号在他地登陆');
-        }
         
+    }
+
+     /**
+     * 生成节点
+     * @author Leimon <6230200@qq.com>
+     * @copyright: 137团队
+     * @date：2018-6-23
+     * @version：1.0
+     */
+    public function get_node(){
+        $userid = cookie('admin_userid');
+        $node = model('node')->where(['parentid'=>0])->select();
+        $node_arr = [];
+        foreach ($node as $key => $value) {
+            $node_arr[] = $value->toArray();
+        }
+        return $node_arr;
     }
 }
