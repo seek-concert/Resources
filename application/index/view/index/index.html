@@ -59,21 +59,25 @@
                         <div class="contentList">
                             {volist name='content_info' id='contentinfo'  offset="0" length='6'}
                                 {if condition='is_null($contentinfo->cover_img)'}
-
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
                                             <p>
                                                 {php}
                                                     $labels = explode(' ',$contentinfo->label);
-                                                    $comment_num = 10;
                                                 {/php}
                                                 {foreach $labels as $lable}
                                                     <a class="label label-default">{$lable}</a>
                                                 {/foreach}
                                             </p>
                                             <p class="overView">{$contentinfo->content}</p>
-                                            <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{$comment_num}</span><span class="count"><i class="glyphicon glyphicon-time"></i>{$contentinfo->release_time}</span></p>
+                                            <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
+                                                <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
+                                                <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
+                                                   {$contentinfo->comments_count}
+                                                </span>
+                                                <span class="count"><i class="glyphicon glyphicon-time"></i>{$contentinfo->release_time}</span>
+                                            </p>
                                         </div>
                                     </div>
                                 {else/}
@@ -83,15 +87,20 @@
                                                 <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
                                                 <p>
                                                     {php}
-                                                    $labels = explode(' ',$contentinfo->label);
-                                                    $comment_num = 10;
+                                                        $labels = explode(' ',$contentinfo->label);
                                                     {/php}
                                                     {foreach $labels as $lable}
-                                                    <a class="label label-default">{$lable}</a>
+                                                        <a class="label label-default">{$lable}</a>
                                                     {/foreach}
                                                 </p>
                                                 <p class="overView">{$contentinfo->content}</p>
-                                                <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{$comment_num}</span><span class="count"><i class="glyphicon glyphicon-time"></i>{$contentinfo->release_time}</span></p>
+                                                <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
+                                                    <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
+                                                    <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
+                                                        {$contentinfo->comments_count}
+                                                    </span>
+                                                    <span class="count"><i class="glyphicon glyphicon-time"></i>{$contentinfo->release_time}</span>
+                                                </p>
                                             </div>
                                             <div class="contentImage">
                                                 <div class="row">
@@ -104,8 +113,6 @@
                                     </div>
                                 {/if}
                             {/volist}
-
-
                         </div>
                         <!--文章列表结束-->
 
@@ -117,9 +124,9 @@
             <div class="col-lg-3 col-md-3 w_main_right">
 
                 <div class="panel panel-default sitetip">
-                    <a href="article_detail.html">
+                    <a href="#">
                         <strong>站点公告</strong><br/>
-                        {:isset($config_info->announcement)?:'<h3 class="title">暂无公告</h3>'}
+                        {$config_info->announcement?:'<h3 class="title">暂无公告</h3>'}
                     </a>
                 </div>
 
