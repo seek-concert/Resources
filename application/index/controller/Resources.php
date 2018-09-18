@@ -13,6 +13,11 @@ class Resources extends Controller
     /*======= 资源下载 ======*/
     public function index()
     {
+
+        /*------ 页面SEO获取 ------*/
+        $seo = get_seo();
+
+        $this->assign('seo',$seo);
         //最新发布
         $content_title = Contents::field(['id','title'])
             ->limit(10)

@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>code坞---代码坞|代码分享交流群：6968963</title>
+    <title>{$seo['title']}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="code坞 代码坞 php 代码交流 分享" />
-    <meta name="description" content="code坞  代码坞 php 代码交流 分享" />
+    <meta name="keywords" content="{$seo['keywords']}" />
+    <meta name="description" content="{$seo['description']}" />
 </head>
 <!-- 首页 -->
 <link rel="shortcut icon" href="/logo.ico" type="image/x-icon"/>
@@ -42,3 +42,22 @@
         </div>
     </div>
 </div>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?977df40bacca7a07132142a5d034c5a0":"https://jspassport.ssl.qhimg.com/11.0.1.js?977df40bacca7a07132142a5d034c5a0";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
