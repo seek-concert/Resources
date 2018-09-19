@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
-
+use think\Config;
 
 /**
  * 校验验证码
@@ -51,3 +51,41 @@ function random($length, $numeric = 0) {
 	}
 	return $hash;
 }
+/**
+ * 获取子节点
+ * @return bool
+ * @author xuewl <master@xuewl.cn>
+ * @copyright: 雪毅网络官方团队
+ * @date：2016-07-12
+ * @version：1.0
+ **/
+function get_child($parentid = 0){
+	$node = model('admin/node')->where(['parentid'=>$parentid])->select();
+	$node_arr = [];
+	foreach ($node as $key => $value) {
+		$node_arr[] = $value->toArray();
+	}
+	return $node_arr;
+}
+
+/**
+ * 获取SEO
+ * @return bool
+ * @author xuewl <master@xuewl.cn>
+ * @copyright: 雪毅网络官方团队
+ * @date：2016-07-12
+ * @version：1.0
+ **/
+
+ function get_seo(){
+	 //seo配置获取
+	 $seo_config = config('seo');
+	 //当前层
+	 $m =  request()->module();
+	 //当前控制器
+	 $c = request()->controller();
+	 //当前action
+	 $a = request()->action();
+	 $page_seo =  $seo_config[$m][$c][$a];
+	 return $page_seo;
+ }

@@ -18,8 +18,8 @@ class Index{
         $password = $data['password'];
         $code = $data['code'];
         if (!checkVerify(strtolower( $code))) {
-            $this->error ='验证码不正确';
-            return false;
+           $this->error ='验证码不正确';
+           return false;
           }
         $admin_info = model('admin')->where(['username'=>$username])->find();
         if(!$admin_info){
