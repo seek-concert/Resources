@@ -43,7 +43,7 @@
                     <a href="article_detail.html">
                         <strong>博主置顶</strong>
                         <h3 class="title">{$content_top->title}</h3>
-                        <p class="overView">{$content_top->content}</p>
+                        <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden;margin-bottom: 4px;">{$content_top->content}</p>
                     </a>
                     {/if}
                 </div>
@@ -70,7 +70,7 @@
                                                     <a class="label label-default">{$lable}</a>
                                                 {/foreach}
                                             </p>
-                                            <p class="overView">{$contentinfo->content}</p>
+                                            <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;margin-bottom: 4px;">{$contentinfo->content}</p>
                                             <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
                                                 <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
                                                 <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
@@ -93,7 +93,7 @@
                                                         <a class="label label-default">{$lable}</a>
                                                     {/foreach}
                                                 </p>
-                                                <p class="overView">{$contentinfo->content}</p>
+                                                <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;">{$contentinfo->content}</p>
                                                 <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
                                                     <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
                                                     <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
@@ -126,7 +126,7 @@
                 <div class="panel panel-default sitetip">
                     <a href="#">
                         <strong>站点公告</strong><br/>
-                        {$config_info->announcement?:'<h3 class="title">本站致力于PHP,JAVA共同学习交流,共同成长,交流群:6968963</h3>'}
+                        <h3 class="title">{$config_info->announcement?:'本站致力于PHP,JAVA共同学习交流,共同成长,交流群:6968963'}</h3>
                     </a>
                 </div>
 
