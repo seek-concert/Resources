@@ -40,7 +40,7 @@
 
                 <div class="panel panel-default contenttop">
                    {if condition="isset($content_top)"}
-                    <a href="article_detail.html">
+                    <a href="{:url('resources/resources_detail',['id'=>$content_top->id])}">
                         <strong>博主置顶</strong>
                         <h3 class="title">{$content_top->title}</h3>
                         <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden;margin-bottom: 4px;">{$content_top->content}</p>
@@ -61,7 +61,7 @@
                                 {if condition='is_null($contentinfo->cover_img)'}
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
+                                            <h4><a class="title" href="{:url('resources/resources_detail',['id'=>$contentinfo->id])}">{$contentinfo->title}</a></h4>
                                             <p>
                                                 {php}
                                                     $labels = explode(' ',$contentinfo->label);
@@ -84,7 +84,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="contentleft">
-                                                <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
+                                                <h4><a class="title" href="{:url('resources/resources_detail',['id'=>$contentinfo->id])}">{$contentinfo->title}</a></h4>
                                                 <p>
                                                     {php}
                                                         $labels = explode(' ',$contentinfo->label);

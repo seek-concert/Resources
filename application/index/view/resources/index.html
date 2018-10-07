@@ -4,7 +4,7 @@
         <div class="row w_main_row">
 
             <ol class="breadcrumb w_breadcrumb">
-                <li><a href="#">首页</a></li>
+                <li><a href="/">首页</a></li>
                 <li class="active">资源下载</li>
                 <span class="w_navbar_tip">我们长路漫漫，只因学无止境。</span>
             </ol>
@@ -24,7 +24,7 @@
                                     </div>
 
                                     <h4 class="media-heading">
-                                        <a class="title" href="#">{$contentinfo->title}</a>
+                                        <a class="title" href="{:url('resources/resources_detail',['id'=>$contentinfo->id])}">{$contentinfo->title}</a>
                                     </h4>
                                     {php}
                                         $labels = explode(' ',$contentinfo->label);
@@ -33,7 +33,7 @@
                                         <a class="label label-default">{$lable}</a>
                                     {/foreach}
                                     <p class="w_list_overview overView" style="line-height: 2 !important;  display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;margin-bottom: 4px;">{$contentinfo->content}</p>
-                                    <p class="count_r"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{$contentinfo->comments_count}</span><span class="count"><i class="glyphicon glyphicon-time"></i>2017-01-16</span></p>
+                                    <p class="count_r"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:{$contentinfo->comments_count}</span><span class="count"><i class="glyphicon glyphicon-time"></i>{$contentinfo->release_time}</span></p>
                                 </div>
                             </div>
                         </div>

@@ -54,7 +54,7 @@ class Index extends Base
 
         //博主置顶
 
-        $content_top = Contents::field(['title','content'])->where(['is_top'=>1])->find();
+        $content_top = Contents::field(['id','title','content'])->where(['is_top'=>1])->find();
 
         $this->assign('content_top',$content_top);
 

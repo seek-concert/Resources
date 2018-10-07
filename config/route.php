@@ -11,5 +11,6 @@
 use think\Route;
 
 Route::rule('resources','resources/index');
+Route::rule('resources_detail/:id','resources/resources_detail');
 Route::rule('comment','comment/index');
 Route::rule('about','about/index');
