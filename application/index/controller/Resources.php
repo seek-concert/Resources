@@ -52,6 +52,12 @@ class Resources extends Controller
             ->find();
         $this->assign('content_info',$content_info);
 
+        //上一篇下一篇
+        $content_top = Contents::field(['id','title'])->where('id','<',$id)->limit(1)->order(['id'=>'asc'])->select();
+        $content_bottom = Contents::field(['id','title'])->where('id','>',$id)->limit(1)->order(['id'=>'asc'])->select();
+        $this->assign('content_top',$content_top?$content_top[0]:'');
+        $this->assign('content_bottom',$content_bottom?$content_bottom[0]:'');
+
         /*------ 页面SEO获取 ------*/
         $seo['title'] = 'code坞,代码坞,PHP,php学习'.$content_info['title'];
         $seo['keywords'] = 'code坞,代码坞,PHP,php学习'.$content_info['title'];
@@ -61,6 +67,7 @@ class Resources extends Controller
         $this->assign('action',request()->controller());
         //最新发布
         $content_title = Contents::field(['id','title'])
+            ->where('id','neq',$id)
             ->limit(10)
             ->order(['release_time'=>'desc'])
             ->select();

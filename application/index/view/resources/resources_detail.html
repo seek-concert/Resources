@@ -31,8 +31,8 @@
 						    </div>
 
 							<div class="nextinfo">
-								<p class="last">上一篇：<a href="#">免费收录网站搜索引擎登录口大全</a></p>
-								<p class="next">下一篇：<a href="#">javascript显示年月日时间代码</a></p>
+								<p class="last">上一篇：<a href="{:isset($content_top->id)?$content_top->id:'#'}">{:isset($content_top->title)?$content_top->title:'已经到头了'}</a></p>
+								<p class="next">下一篇：<a href="{:isset($content_bottom->id)?$content_bottom->id:'#'}">{:isset($content_bottom->title)?$content_bottom->title:'已经到底了'}</a></p>
 						    </div>
 							
 						</div>
@@ -56,9 +56,9 @@
 					  </div>
 					  <div class="panel-body">
 					    	<ul class="list-unstyled sidebar">
-								{volist name='content_info' id='contentinfos'}
+								{volist name='content_title' id='contentinfos'}
 								<li>
-									<a href="#">{$contentinfos->title}</a>
+									<a href="{:url('resources/resources_detail',['id'=>$contentinfos->id])}">{$contentinfos->title}</a>
 								</li>
 								{/volist}
 							</ul>

@@ -151,7 +151,7 @@
                         <ul class="list-unstyled sidebar">
                             {volist name='content_info' id='contentinfos'}
                             <li>
-                                <a href="#">{$contentinfos->title}</a>
+                                <a href="{:url('resources/resources_detail',['id'=>$contentinfos->id])}">{$contentinfos->title}</a>
                             </li>
                             {/volist}
 
