@@ -53,7 +53,7 @@ class Resources extends Controller
         $this->assign('content_info',$content_info);
 
         //上一篇下一篇
-        $content_top = Contents::field(['id','title'])->where('id','<',$id)->limit(1)->order(['id'=>'asc'])->select();
+        $content_top = Contents::field(['id','title'])->where('id','<',$id)->limit(1)->order(['id'=>'desc'])->select();
         $content_bottom = Contents::field(['id','title'])->where('id','>',$id)->limit(1)->order(['id'=>'asc'])->select();
         $this->assign('content_top',$content_top?$content_top[0]:'');
         $this->assign('content_bottom',$content_bottom?$content_bottom[0]:'');
