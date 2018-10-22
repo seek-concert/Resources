@@ -166,6 +166,11 @@ a,a:hover{
 	color: #999;
     margin-bottom: 0;
 }
+.contenttop .top{
+	line-height: 21px;
+    height: 85px;
+    overflow: hidden;
+}
 /*公告*/
 .sitetip:hover{
 	border: 1px #8EC55F solid;
@@ -185,7 +190,7 @@ a,a:hover{
 }
 .sitetip .title{
     color: #8EC55F;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: normal;
     margin-top: 14px;
 }

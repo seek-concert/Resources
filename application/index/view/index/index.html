@@ -43,7 +43,7 @@
                     <a href="article_detail.html">
                         <strong>博主置顶</strong>
                         <h3 class="title">{$content_top->title}</h3>
-                        <p class="overView">{$content_top->content}</p>
+                        <div class="overView top">{$content_top->content}</div>
                     </a>
                     {/if}
                 </div>
@@ -61,7 +61,7 @@
                                 {if condition='is_null($contentinfo->cover_img)'}
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
+                                            <h4><a class="title" href="/resources_detail/{$contentinfo->id}">{$contentinfo->title}</a></h4>
                                             <p>
                                                 {php}
                                                     $labels = explode(' ',$contentinfo->label);
@@ -70,7 +70,7 @@
                                                     <a class="label label-default">{$lable}</a>
                                                 {/foreach}
                                             </p>
-                                            <p class="overView">{$contentinfo->content}</p>
+                                            <p class="overView">{$contentinfo->profile}</p>
                                             <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
                                                 <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
                                                 <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
@@ -84,7 +84,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="contentleft">
-                                                <h4><a class="title" href="#">{$contentinfo->title}</a></h4>
+                                                <h4><a class="title" href="/resources_detail/{$contentinfo->id}">{$contentinfo->title}</a></h4>
                                                 <p>
                                                     {php}
                                                         $labels = explode(' ',$contentinfo->label);
@@ -192,5 +192,7 @@
 <script>
     /*====== banner显示 ======*/
     $('.item').first().addClass('active');
+
+    console.log("");
 </script>
 {include file="public/footer" /}
