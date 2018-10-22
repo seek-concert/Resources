@@ -61,11 +61,7 @@
                                 {if condition='is_null($contentinfo->cover_img)'}
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-<<<<<<< .mine
-                                            <h4><a class="title" href="/resources_detail/{$contentinfo->id}">{$contentinfo->title}</a></h4>
-=======
                                             <h4><a class="title" href="{:url('resources/resources_detail',['id'=>$contentinfo->id])}">{$contentinfo->title}</a></h4>
->>>>>>> .theirs
                                             <p>
                                                 {php}
                                                     $labels = explode(' ',$contentinfo->label);
@@ -74,11 +70,7 @@
                                                     <a class="label label-default">{$lable}</a>
                                                 {/foreach}
                                             </p>
-<<<<<<< .mine
-                                            <p class="overView">{$contentinfo->profile}</p>
-=======
                                             <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;margin-bottom: 4px;">{$contentinfo->content}</p>
->>>>>>> .theirs
                                             <p><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">{$contentinfo->release_man}</a></span>
                                                 <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:{$contentinfo->click_num}</span>
                                                 <span class="count"><i class="glyphicon glyphicon-comment"></i>评论:
@@ -92,11 +84,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="contentleft">
-<<<<<<< .mine
-                                                <h4><a class="title" href="/resources_detail/{$contentinfo->id}">{$contentinfo->title}</a></h4>
-=======
                                                 <h4><a class="title" href="{:url('resources/resources_detail',['id'=>$contentinfo->id])}">{$contentinfo->title}</a></h4>
->>>>>>> .theirs
                                                 <p>
                                                     {php}
                                                         $labels = explode(' ',$contentinfo->label);
