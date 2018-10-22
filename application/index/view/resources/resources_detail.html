@@ -1,0 +1,91 @@
+{include file="public/header" /}
+	<div class="w_container">
+		<div class="container">
+			<div class="row w_main_row">
+				
+				<ol class="breadcrumb w_breadcrumb">
+				  <li><a href="/">首页</a></li>
+				  <li><a href="{:url('resources/index')}">资源文章</a></li>
+				  <li class="active">{$content_info->title?:''}</li>
+				  <span class="w_navbar_tip">我们长路漫漫，只因学无止境。</span>
+				</ol>
+				
+				<div class="col-lg-9 col-md-9 w_main_left">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2 class="c_titile">{$content_info->title?:''}</h2>
+							<p class="box_c"><span class="d_time">发布时间：{$content_info->release_time}</span><span>编辑：{$content_info->release_man}</span><span>阅读（{$content_info->click_num}）</span></p>
+							<ul class="infos">
+								{$content_info->content?:'获取失败'}
+							</ul>
+															
+							<div class="keybq">
+						    	<p><span>关键字</span>：
+									{php}
+									$labels = explode(' ',$content_info->label);
+									{/php}
+									{foreach $labels as $lable}
+									<a class="label label-default">{$lable}</a>
+									{/foreach}
+								</p>
+						    </div>
+
+							<div class="nextinfo">
+								<p class="last">上一篇：<a href="{:isset($content_top->id)?$content_top->id:'#'}">{:isset($content_top->title)?$content_top->title:'已经到头了'}</a></p>
+								<p class="next">下一篇：<a href="{:isset($content_bottom->id)?$content_bottom->id:'#'}">{:isset($content_bottom->title)?$content_bottom->title:'已经到底了'}</a></p>
+						    </div>
+							
+						</div>
+					</div>
+					
+					<!--<div class="panel panel-default">-->
+						<!--<div class="panel-body">-->
+							<!--<center><div id="cyReward" role="cylabs" data-use="reward" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div></center>-->
+							<!--&lt;!&ndash;<div id="cyEmoji" role="cylabs" data-use="emoji" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div>&ndash;&gt;-->
+							<!--<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>-->
+							<!--<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysPwLFm1"></script>-->
+
+						<!--</div>-->
+					<!--</div>-->
+				</div>
+				<div class="col-lg-3 col-md-3 w_main_right">
+					
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">最新发布</h3>
+					  </div>
+					  <div class="panel-body">
+					    	<ul class="list-unstyled sidebar">
+								{volist name='content_title' id='contentinfos'}
+								<li>
+									<a href="{:url('resources/resources_detail',['id'=>$contentinfos->id])}">{$contentinfos->title}</a>
+								</li>
+								{/volist}
+							</ul>
+					  </div>
+					</div>
+					
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">友情链接</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="newContent">
+					    	<ul class="list-unstyled sidebar shiplink">
+								{volist name='href_info' id='hrefinfo'}
+								<li>
+									<a href="{$hrefinfo->jump_url}" target="_blank">{$hrefinfo->name}</a>
+								</li>
+								{/volist}
+							</ul>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			
+			
+			</div>
+		</div>
+	</div>
+
+{include file="public/footer" /}
