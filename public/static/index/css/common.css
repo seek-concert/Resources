@@ -89,7 +89,7 @@ a,a:hover{
 	float: left;
 	display: inline;
 	/*position:relative;*/
-	padding: 17.5px 0px;
+	padding: 17.5px 35px;
 }
 .w_header_nav>ul>li>a{
 	/*margin: 17.5px 0px;*/
@@ -342,4 +342,22 @@ a,a:hover{
         width: 55px;
 	}
 	.w_header_nav>ul>li>a{width: 50px;}
+}
+
+.w_main_right .panel-default .panel-body ul li {
+	width: 230px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.document_content{
+	line-height: 2 !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    max-height: 85px;
+}
+.friends_link{
+	margin-left: 70px;
+    float: left;
 }

@@ -1,60 +1,96 @@
 <?php
-/**
- * 后台控制器
- */
+/*
+|--------------------------------------------------------------------------
+| 登陆
+|--------------------------------------------------------------------------
+*/
 namespace app\admin\controller;
+use app\admin\model\Admins;
+use think\Controller;
+use org\Verify;
 
-class Index extends Init
+class Index extends Controller
 {
-
-    /**
-     * 后台登录
-     * @author Leimon <6230200@qq.com>
-     * @copyright: 137团队
-     * @date：2018-6-23
-     * @version：1.0
-     */
-    public function login(){
-        //$captcha = new Captcha();
-        if (request()->isPost()){
-            $param = input('post.');
-            $username = isset($param['username'])?$param['username']:'';
-            if($username == ''){
-                $this->error('用户名不能为空');
-            }
-
-            $password = isset($param['password'])?$param['password']:'';
-            if($password == ''){
-                $this->error('填写密码不能为空');
-            }
-            $code = isset($param['code'])?$param['code']:'';
-            if($code == ''){
-                $this->error('填写验证码不能为空');
-            }
-            $index_logic = new \app\admin\logic\Index();
-            $ret = $index_logic->admin_login($param);
-            if(!$ret){
-                $this->error($index_logic->getError(),request()->action());
-            }else{
-                $this->success($index_logic->getSuccess(),url('index'));
-            }
-        }
-        return view();
+    /* ========== 初始化 ========== */
+    public function _initialize()
+    {
+        parent::_initialize();
     }
 
-    /**
-     * 后台首页
-     * @author Leimon <6230200@qq.com>
-     * @copyright: 137团队
-     * @date：2018-6-23
-     * @version：1.0
-     */
+    /* ============ 登录页 ============== */
     public function index(){
-        $userid = cookie('admin_userid');
-        $node_arr = get_child(0);
-        $this->assign('node_arr',$node_arr);
-        return view();
+        return view('/login');
     }
 
-   
+    /* ============ 登录处理 ============== */
+    public function login(){
+        header('Content-type: application/json');
+        $data = input('param.');
+        if(!$data['username']){
+            return json(msg(0,'','请输入用户名！'));
+        }
+        if(!$data['password']){
+            return json(msg(0,'','请输入密码！'));
+        }
+//        if(!$data['code']){
+//            return json(msg(0,'','请输入验证码！'));
+//        }
+
+        //验证数据
+//        if(!captcha_check($data['code'])){
+//            return json(msg(0,'','验证码输入错误！'));
+//        };
+        $admin_info = Admins::field(['id','name','username','password','status','role_id'])
+            ->with(['adminRole'])
+            ->where(['username'=>$data['username']])
+            ->find();
+        if(is_null($admin_info)){
+            return json(msg(0,'','该用户名不存在！'));
+        }
+        if(0===$admin_info['status']){
+            return json(msg(0,'','该用户已被禁用！'));
+        };
+       if($admin_info['password']!=md5($data['password'])){
+           return json(msg(0,'','密码输入错误！'));
+       };
+
+        $secret = create_guid();
+        $login_ip = request()->ip();
+        /* 写入登陆数据 */
+        $updateAdminData = array (
+            'secret'        => $secret,
+            'last_login_ip'       => $login_ip,
+            'updated_at'       => time(),
+        );
+        if (!model('admins')->where(['id'=>$admin_info['id']])->update($updateAdminData, FALSE)) {
+            return json(msg(0,'','登录异常，请稍候尝试.'));
+        }
+
+        session('name',$admin_info->name);
+        session('secret',$secret);
+        session('type',$admin_info['admin_role']['type']);
+        session('role_id',$admin_info['role_id']);
+        session('role_name',$admin_info['admin_role']['name']);
+//        dump(json(msg(1,url('home/index'),'登录成功')));die;
+        return  json(msg(1,url('home/index'),'登录成功'));
+    }
+
+    /* ============ 登录处理 ============== */
+    public function logout(){
+        session(null);
+        return $this->redirect(url('index/index'));
+    }
+
+
+    /* ============ 清除缓存 ============== */
+    public function delete_cacha(){
+        if(!deleteAll('../runtime/cache')){
+            return json('清除缓存失败');
+        }
+        if(!deleteAll('../runtime/temp')){
+            return json('清除缓存失败');
+        }
+
+        return $this->success('清除缓存完成');
+    }
 }
