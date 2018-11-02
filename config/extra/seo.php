@@ -41,6 +41,15 @@ return [
             ], 
         ],
     ],
+    'tool'=>[
+        'Tool'=>[
+            'select_area'=>[
+                'keywords' => '代码坞,code坞,资源下载,PHP学习,JAVA学习,地区联动菜单示例',
+                'title' => '地区联动菜单示例-js联动-代码坞',
+                'description' => '代码坞,code坞,资源下载,PHP学习,JAVA学习,地区联动菜单示例',
+            ]
+        ]
+    ]
    
 
 ];

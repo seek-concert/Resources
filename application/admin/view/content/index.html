@@ -133,6 +133,10 @@
         })
 
     }
+    function show_img(obj){
+        var img_src = $(obj).attr('src');
+        layer.confirm('<img src="'+img_src+'">', {title:'查看图片'});
+    }
 </script>
 </body>
 </html>

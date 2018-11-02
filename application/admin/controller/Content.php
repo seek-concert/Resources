@@ -36,13 +36,12 @@ class Content extends Base
 
             // 拼装参数
             foreach($selectResult as $key=>$vo){
-
                 $selectResult[$key]['operate'] = showOperate(makeButton('content',$vo['id']));
+                $selectResult[$key]['cover_img'] = '<img width="50px" height="50px" onclick="show_img(this)" src="'.$vo['cover_img'].'">';
             }
 
             $return['total'] = Contents::where($where)->count();  //总数据
             $return['rows'] = $selectResult;
-
             return json($return);
         }
         return view();

@@ -43,7 +43,7 @@
                     <a href="{:url('resources/resources_detail',['id'=>$content_top->id])}">
                         <strong>博主置顶</strong>
                         <h3 class="title">{$content_top->title}</h3>
-                        <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden;margin-bottom: 4px;">{$content_top->content}</p>
+                        <p class="overView" style="line-height: 2 !important;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden;margin-bottom: 4px;"><?php echo strip_tags($content_top->content)?></p>
                     </a>
                     {/if}
                 </div>

@@ -8,6 +8,9 @@ namespace app\admin\controller;
 
 use app\admin\model\Admins;
 use app\admin\model\Roles;
+use app\admin\model\Area;
+use PHPExcel_IOFactory;
+use PHPExcel;
 
 class Admin extends Base
 {
@@ -151,4 +154,5 @@ class Admin extends Base
             return $this->error('删除失败!');
         }
     }
+
 }

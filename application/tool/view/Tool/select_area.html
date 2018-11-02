@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="__STATIC__/admin/js/jquery.min.js"></script>
+<body>
+    <form >
+            <select name="" id="province">
+                    {volist name="province_lists" id="val_province"}
+                        <option value="{$val_province.id}">{$val_province.name}</option>
+                    {/volist}
+                </select>
+                <select name="" id="city">
+                    {volist name="city_lists" id="val_city"}
+                        <option value="{$val_city.id}">{$val_city.name}</option>
+                    {/volist}
+                </select>
+                <select name="" id="area">
+                    {volist name="area_lists" id="val_area"}
+                        <option value="{$val_area.id}">{$val_area.name}</option>
+                    {/volist}
+                </select>
+</form>
+</body>
+
+</html>
+
+<script>
+    $("#province").change(function(){
+        var parent_id = $(this).val();
+        $('#area option').remove();
+        $('#city option').remove();
+        $.post("{:url('select_next_area')}",{parentid:parent_id},function(ret){
+            ret = JSON.parse(ret);  
+            if(ret.code == 1){
+                var _html = '';
+                $.each(ret.data,function(i,n){
+                    _html += '<option value="'+n.id+'">'+n.name+'</option>';
+                    if(i == 0){
+                        get_area(n.id);
+                    }
+                })
+                $("#city").append(_html);
+                $('#city').show();
+                
+            }
+        })
+       
+    })
+    $("#city").change(function(){
+        $('#area option').remove();
+        get_area($(this).val());
+       
+    })
+    function get_area(parent_id){
+        $.post("{:url('select_next_area')}",{parentid:parent_id},function(ret){
+            ret = JSON.parse(ret);  
+            if(ret.code == 1){
+                var _html = '';
+                $.each(ret.data,function(i,n){
+                    _html += '<option value="'+n.id+'">'+n.name+'</option>';
+                })
+                $("#area").append(_html);
+                $('#area').show();
+            }
+        })
+    }
+
+
+   
+</script>
